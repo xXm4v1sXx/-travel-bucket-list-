@@ -15,10 +15,11 @@ body {
     padding: 0;
 
     font-family: "Instrument Serif", serif;
-    line-height: 1.6;
 
-    background: #f5f1e8;
-    color: #333;
+    background-color: #f5f1e8;
+    color: #000000;
+
+    line-height: 1.6;
 }
 
 
@@ -35,13 +36,14 @@ h4 {
 }
 
 h1 {
-    margin: 0 0 10px;
     font-size: 48px;
+    margin-bottom: 10px;
 }
 
 h2 {
-    margin: 0 0 20px;
     font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 h3 {
@@ -50,38 +52,42 @@ h3 {
 
 
 /* =====================================
-   PAGE LAYOUT
+   GENERAL LAYOUT
    ===================================== */
 
-main,
-.website-content,
-.page-header {
+main {
     max-width: 1100px;
     margin: 0 auto;
-}
-
-main {
     padding: 60px 30px 100px;
 }
 
 .website-content {
+    max-width: 1100px;
+    margin: 0 auto;
     padding: 80px 30px;
 }
 
 .page-header {
+    max-width: 1100px;
+    margin: 0 auto;
     padding: 70px 30px 30px;
+}
+
+.page-header h1 {
+    margin-bottom: 10px;
 }
 
 .page-header p {
     max-width: 650px;
     margin: 0;
+
     font-size: 20px;
 
-    color: #ffffff;
+    color: #000000;
 
     text-shadow:
-        0 0 5px rgba(57, 255, 20, 0.7),
-        0 0 12px rgba(57, 255, 20, 0.45);
+        0 0 6px #39FF14,
+        0 0 12px #39FF14;
 }
 
 
@@ -94,19 +100,25 @@ main {
 
     margin-bottom: 30px;
 
-    color: #ffffff;
-    font-family: "Instrument Serif", serif;
     font-size: 18px;
+
+    color: #000000;
     text-decoration: none;
 
     transition:
         transform 0.2s ease,
-        color 0.2s ease;
+        color 0.2s ease,
+        text-shadow 0.2s ease;
 }
 
 .back-link:hover {
-    color: #FF69B4;
+    color: #39FF14;
+
     transform: translateX(-4px);
+
+    text-shadow:
+        0 0 6px #39FF14,
+        0 0 12px #39FF14;
 }
 
 
@@ -121,74 +133,152 @@ main {
 .filter-section h2 {
     margin-bottom: 18px;
 
-    font-family: "Mountains of Christmas", cursive;
-    font-size: 32px;
-    font-weight: 700;
-
     color: #FE019A;
 }
 
 
 /* =====================================
-   FILTER CONTROLS
+   FILTER BUTTONS
    ===================================== */
+
+/*
+   ALL FILTERS USE THE SAME SIZE
+   This keeps continents, months and
+   countries visually consistent.
+*/
 
 #continent-buttons,
 #country-buttons,
 #month-buttons {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 10px;
+
+    gap: 12px;
 
     margin-bottom: 25px;
 }
 
 
-/* Continent + country buttons */
+/* Shared rectangular button styling */
 
 #continent-buttons button,
-#country-buttons button {
+#country-buttons button,
+#month-buttons label {
+
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: 9px 16px;
+    height: 38px;
 
-    border: 1px solid #ddd;
-    border-radius: 999px;
+    padding: 5px 12px;
 
-    background: white;
-    color: #333;
+    border: 1px solid #000000;
+    border-radius: 2px;
+
+    background: #f5f1e8;
+    color: #000000;
 
     font-family: "Instrument Serif", serif;
     font-size: 16px;
+    font-weight: 400;
 
     cursor: pointer;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 0 5px rgba(57, 255, 20, 0.65),
+        0 0 10px rgba(57, 255, 20, 0.35);
 
     transition:
         background 0.2s ease,
         color 0.2s ease,
         border-color 0.2s ease,
+        box-shadow 0.2s ease,
         transform 0.2s ease;
 }
 
+
+/* Hover */
+
 #continent-buttons button:hover,
-#country-buttons button:hover {
-    background: #f3f3f3;
+#country-buttons button:hover,
+#month-buttons label:hover {
+
     transform: translateY(-2px);
+
+    box-shadow:
+        0 0 7px #39FF14,
+        0 0 14px rgba(57, 255, 20, 0.65);
 }
 
+
+/* Click */
+
 #continent-buttons button:active,
-#country-buttons button:active {
+#country-buttons button:active,
+#month-buttons label:active {
     transform: scale(0.97);
 }
 
+
+/* Selected continent / country */
+
 #continent-buttons button.active,
 #country-buttons button.active {
-    background: #39FF14;
-    color: #333;
-    border-color: #39FF14;
+
+    background: #000000;
+    color: #39FF14;
+
+    border-color: #000000;
+
+    box-shadow:
+        0 0 7px #39FF14,
+        0 0 16px rgba(57, 255, 20, 0.7);
 }
+
+
+/* =====================================
+   MONTH CHECKBOXES
+   ===================================== */
+
+/*
+   The checkbox still functions normally,
+   but visually the whole label becomes
+   the button.
+*/
+
+#month-buttons label {
+    user-select: none;
+}
+
+#month-buttons input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* Selected month */
+
+#month-buttons label:has(input:checked) {
+
+    background: #000000;
+
+    color: #39FF14;
+
+    border-color: #000000;
+
+    box-shadow:
+        0 0 7px #39FF14,
+        0 0 16px rgba(57, 255, 20, 0.7);
+}
+
 
 /* =====================================
    CITY GRID
@@ -198,6 +288,7 @@ main {
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
+
     gap: 24px;
 
     margin-top: 30px;
@@ -205,18 +296,20 @@ main {
 
 
 /* =====================================
-   CITY CARDS
+   CITY CARD
    ===================================== */
 
 .city-card {
     overflow: hidden;
 
-    border-radius: 16px;
+    background: #fff;
 
-    background: white;
+    border: 1px solid #000000;
+    border-radius: 2px;
 
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.08);
+        0 0 6px rgba(57, 255, 20, 0.6),
+        0 0 14px rgba(57, 255, 20, 0.3);
 
     cursor: pointer;
 
@@ -229,7 +322,8 @@ main {
     transform: translateY(-5px);
 
     box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.12);
+        0 0 8px #39FF14,
+        0 0 18px rgba(57, 255, 20, 0.65);
 }
 
 .city-image {
@@ -244,27 +338,27 @@ main {
 .city-card h3 {
     margin: 16px 18px 4px;
 
-    font-family: "Mountains of Christmas", cursive;
     font-size: 28px;
-    font-weight: 700;
 }
 
 .city-card p {
     margin: 0 18px 18px;
 
     color: #666;
+
     font-size: 17px;
 }
 
 
 /* =====================================
-   ACTIVITIES CATALOGUE
+   ACTIVITIES
    ===================================== */
 
 #activities-container {
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
+
     gap: 32px;
 
     margin-top: 50px;
@@ -275,7 +369,8 @@ main {
 
     margin: 0 0 5px;
 
-    font-family: "Mountains of Christmas", cursive;
+    color: #FE019A;
+
     font-size: 40px;
 }
 
@@ -293,8 +388,12 @@ main {
 
     background: #fff;
 
-    border: 1px solid #dedad0;
-    border-radius: 4px;
+    border: 1px solid #000000;
+    border-radius: 2px;
+
+    box-shadow:
+        0 0 6px rgba(57, 255, 20, 0.6),
+        0 0 14px rgba(57, 255, 20, 0.3);
 
     transition:
         transform 0.25s ease,
@@ -305,7 +404,8 @@ main {
     transform: translateY(-4px);
 
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.08);
+        0 0 8px #39FF14,
+        0 0 18px rgba(57, 255, 20, 0.65);
 }
 
 
@@ -316,12 +416,11 @@ main {
 .activity-number {
     padding: 16px 20px 8px;
 
-    color: #999;
-
-    font-family: "Instrument Serif", serif;
     font-size: 14px;
 
     letter-spacing: 2px;
+
+    color: #999;
 }
 
 
@@ -335,24 +434,25 @@ main {
     width: 100%;
     height: 230px;
 
-    margin: 0 0 20px;
-
     object-fit: cover;
+
+    margin: 0 0 20px;
 }
 
 
 /* =====================================
-   ACTIVITY TITLE
+   ACTIVITY NAME
    ===================================== */
 
 .activity-name {
     margin: 0 20px 3px;
 
     font-family: "Mountains of Christmas", cursive;
-    font-size: 28px;
-    font-weight: 700;
 
+    font-size: 28px;
     line-height: 1.05;
+
+    font-weight: 700;
 }
 
 
@@ -363,15 +463,14 @@ main {
 .activity-location {
     margin: 0 20px 20px;
 
-    color: #777;
-
-    font-family: "Instrument Serif", serif;
     font-size: 17px;
+
+    color: #777;
 }
 
 
 /* =====================================
-   RATING
+   RATINGS
    ===================================== */
 
 .activity-rating {
@@ -382,16 +481,18 @@ main {
 .review-label {
     margin-bottom: 6px;
 
-    color: #999;
-
     font-size: 13px;
 
     letter-spacing: 1.5px;
+
     text-transform: uppercase;
+
+    color: #999;
 }
 
 .rating-stars {
     display: flex;
+
     gap: 3px;
 }
 
@@ -400,6 +501,8 @@ main {
 
     width: 27px;
     height: 27px;
+
+    cursor: pointer;
 }
 
 .star::before {
@@ -415,7 +518,7 @@ main {
 
 .star.full::before {
     content: "★";
-    color: #333;
+    color: #000000;
 }
 
 .star.half::before {
@@ -436,14 +539,11 @@ main {
 
     overflow: hidden;
 
-    color: #333;
-
     font-size: 27px;
     line-height: 27px;
+
+    color: #000000;
 }
-
-
-/* Invisible clickable halves */
 
 .star-half {
     position: absolute;
@@ -456,6 +556,7 @@ main {
     padding: 0;
 
     border: none;
+
     background: transparent;
 
     cursor: pointer;
@@ -488,26 +589,21 @@ main {
 
     padding: 10px;
 
-    resize: vertical;
-
-    outline: none;
+    font-family: "Instrument Serif", serif;
+    font-size: 16px;
 
     background: #faf9f5;
 
     border: 1px solid #dedad0;
-    border-radius: 4px;
+    border-radius: 2px;
 
-    font-family: "Instrument Serif", serif;
-    font-size: 16px;
+    outline: none;
 
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
+    resize: vertical;
 }
 
 .review-input:focus {
-    border-color: #999;
-    background: white;
+    border-color: #000000;
 }
 
 
@@ -520,11 +616,11 @@ main {
 
     padding: 7px 13px;
 
-    border: 1px solid #333;
-    border-radius: 999px;
+    border: 1px solid #000000;
+    border-radius: 2px;
 
     background: transparent;
-    color: #333;
+    color: #000000;
 
     font-family: "Instrument Serif", serif;
     font-size: 15px;
@@ -533,17 +629,15 @@ main {
 
     transition:
         background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+        color 0.2s ease;
 }
 
 .review-button:hover {
-    background: #333;
-    color: white;
-}
+    background: #000000;
+    color: #39FF14;
 
-.review-button:active {
-    transform: scale(0.97);
+    box-shadow:
+        0 0 7px #39FF14;
 }
 
 
@@ -553,7 +647,9 @@ main {
 
 .visited-container {
     display: flex;
+
     align-items: center;
+
     gap: 12px;
 
     margin: 0 20px;
@@ -562,8 +658,8 @@ main {
 .visited-button {
     padding: 7px 13px;
 
-    border: 1px solid #bbb;
-    border-radius: 999px;
+    border: 1px solid #000000;
+    border-radius: 2px;
 
     background: transparent;
     color: #555;
@@ -576,22 +672,30 @@ main {
     transition:
         background 0.2s ease,
         color 0.2s ease,
-        border-color 0.2s ease;
+        box-shadow 0.2s ease;
 }
 
 .visited-button:hover {
-    border-color: #333;
+    background: #000000;
+    color: #39FF14;
+
+    box-shadow:
+        0 0 7px #39FF14;
 }
 
 .visited-button.visited {
-    background: #333;
-    color: white;
-    border-color: #333;
+    background: #000000;
+    color: #39FF14;
+    border-color: #000000;
+
+    box-shadow:
+        0 0 7px #39FF14,
+        0 0 14px rgba(57, 255, 20, 0.6);
 }
 
 .visited-date {
-    color: #999;
     font-size: 14px;
+    color: #999;
 }
 
 
@@ -602,15 +706,9 @@ main {
 .hero {
     position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     width: 100%;
     height: 100vh;
     min-height: 650px;
-
-    overflow: hidden;
 
     background-image:
         linear-gradient(
@@ -622,11 +720,19 @@ main {
     background-size: cover;
     background-position: center;
 
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
     color: white;
+
+    overflow: hidden;
 }
 
 .hero-overlay {
     max-width: 900px;
+
     padding: 40px;
 
     text-align: center;
@@ -635,53 +741,31 @@ main {
 .hero h1 {
     margin: 0;
 
-    color: #FE019A;
-
     font-family: "Mountains of Christmas", cursive;
+
     font-size: clamp(80px, 12vw, 180px);
+
     font-weight: 700;
 
     line-height: 0.9;
+
     letter-spacing: 2px;
+
+    color: #FE019A;
 }
 
 .hero p {
     margin: 35px auto 0;
 
-    color: #39FF14;
-
-    font-family: "Instrument Serif", serif;
     font-size: 36px;
 
     white-space: nowrap;
-}
 
+    color: #000000;
 
-/* =====================================
-   HERO SCROLL TEXT
-   ===================================== */
-
-.hero-scroll {
-    display: block;
-
-    margin-top: 70px;
-
-    font-family: "Instrument Serif", serif;
-    font-size: 12px;
-
-    letter-spacing: 3px;
-    text-transform: uppercase;
-
-    opacity: 0.75;
-}
-
-.scroll-hint {
-    color: #39FF14;
-
-    font-family: "Instrument Serif", serif;
-    font-size: 12px !important;
-
-    letter-spacing: 2px;
+    text-shadow:
+        0 0 6px #39FF14,
+        0 0 12px #39FF14;
 }
 
 
@@ -692,8 +776,8 @@ main {
 .menu-trigger {
     position: fixed;
 
-    top: 0;
     left: 0;
+    top: 0;
 
     width: 25px;
     height: 100vh;
@@ -710,13 +794,21 @@ main {
     width: 260px;
     height: 100vh;
 
-    padding: 50px 35px;
-
     box-sizing: border-box;
 
-    background: rgba(245, 241, 232, 0.96);
+    padding: 50px 35px;
 
-    backdrop-filter: blur(10px);
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.4),
+            rgba(0, 0, 0, 0.4)
+        ),
+        url("images/sidebar-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    backdrop-filter: none;
 
     transform: translateX(-100%);
 
@@ -734,6 +826,7 @@ main {
     margin-bottom: 45px;
 
     font-family: "Mountains of Christmas", cursive;
+
     font-size: 32px;
     font-weight: 700;
 }
@@ -743,21 +836,26 @@ main {
 
     margin-bottom: 25px;
 
-    color: #333;
-
-    font-family: "Instrument Serif", serif;
     font-size: 22px;
+
+    color: #000000;
 
     text-decoration: none;
 
     transition:
         color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.2s ease,
+        text-shadow 0.2s ease;
 }
 
 .side-menu a:hover {
-    color: #FF69B4;
+    color: #39FF14;
+
     transform: translateX(5px);
+
+    text-shadow:
+        0 0 6px #39FF14,
+        0 0 12px #39FF14;
 }
 
 
@@ -772,7 +870,6 @@ main {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 
 @media (max-width: 700px) {
 
@@ -804,13 +901,7 @@ main {
         font-size: 24px;
         white-space: normal;
     }
-
-    .activity-image,
-    .city-image {
-        height: 200px;
-    }
 }
-
 
 @media (max-width: 600px) {
 
@@ -818,140 +909,124 @@ main {
     #activities-container {
         grid-template-columns: 1fr;
     }
-}
 
-#places-section > h2 {
-    color: #FE019A;
-}
-
-.page-header h1 {
-    color: #FE019A;
+    .activity-image,
+    .city-image {
+        height: 200px;
+    }
 }
 
 /* =====================================
-   MONTH PILLS
-   ===================================== */
-
-#month-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-#month-buttons label {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 9px 16px;
-
-    border: 1px solid #ddd;
-    border-radius: 999px;
-
-    background: white;
-    color: #333;
-
-    font-family: "Instrument Serif", serif;
-    font-size: 16px;
-    font-weight: 400;
-
-    cursor: pointer;
-    user-select: none;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-/* Hide checkbox */
-
-#month-buttons input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-
-/* Hover */
-
-#month-buttons label:hover {
-    background: #f3f3f3;
-    transform: translateY(-2px);
-}
-
-
-/* Click */
-
-#month-buttons label:active {
-    transform: scale(0.97);
-}
-
-
-/* Selected */
-
-#month-buttons label:has(input:checked) {
-    background: #39FF14;
-    color: #333;
-    border-color: #39FF14;
-}
-
-#continent-buttons button,
-#month-buttons label {
-    box-shadow:
-        0 0 6px rgba(57, 255, 20, 0.35),
-        0 0 14px rgba(57, 255, 20, 0.18);
-}
-
-/* =====================================
-   PAGE BACKGROUNDS
+   REGION / PERIOD PAGE BACKGROUNDS
    ===================================== */
 
 .region-page,
 .period-page {
     position: relative;
+    min-height: 100vh;
 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-
-/* Different image for each page */
+/* REGION-WISE */
 
 .region-page {
-    background-image: url("images/region-bg.jpg");
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("images/region-bg.jpg");
 }
+
+/* PERIOD-WISE */
 
 .period-page {
-    background-image: url("images/period-bg.jpg");
-}
-
-
-/* Black overlay */
-
-.region-page::before,
-.period-page::before {
-    content: "";
-
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.75);
-
-    z-index: -1;
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.75)
+        ),
+        url("images/period-bg.jpg");
 }
 
 /* =====================================
-   HOMEPAGE TITLE SCREEN
+   FINAL COLOR OVERRIDES
    ===================================== */
 
-.hero {
-    height: 100vh;
-    min-height: 100vh;
+/* HERO SUBTITLE — neon green, NO glow */
+.hero p {
+    color: #39FF14;
+    text-shadow: none;
+}
 
-    overflow: hidden;
+
+/* BACK TO HOME — HOT PINK ALWAYS */
+.back-link {
+    color: #FE019A;
+}
+
+.back-link:hover {
+    color: #FE019A;
+}
+
+
+/* REGION-WISE / PERIOD-WISE PAGE HEADINGS */
+.page-header h1,
+.website-content > section > h2 {
+    color: #FE019A;
+}
+
+
+/* EXPLORE SIDEBAR — BLACK NORMALLY */
+.side-menu a {
+    color: #000000;
+}
+
+/* EXPLORE SIDEBAR — HOT PINK ON HOVER */
+.side-menu a:hover {
+    color: #FE019A;
+}
+
+.page-header > p {
+    color: #ffffff;
+    text-shadow:
+        0 0 5px #39FF14,
+        0 0 10px #39FF14;
+}
+
+/* =====================================
+   SIDEBAR TEXT
+   ===================================== */
+
+/* EXPLORE TITLE */
+.menu-title {
+    color: #FE019A;
+}
+
+
+/* NAVIGATION LINKS */
+.side-menu a {
+    color: #39FF14;
+    text-shadow: none;
+
+    transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* HOVER */
+.side-menu a:hover {
+    color: #39FF14;
+
+    text-shadow:
+        0 0 5px #FE019A,
+        0 0 10px #FE019A,
+        0 0 20px #FE019A;
+
+    transform: translateX(5px);
 }
