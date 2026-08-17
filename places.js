@@ -27,26 +27,34 @@ const places = [
         city: "Kyoto",
         country: "Japan",
         continent: "Asia",
+        image: "images/kyoto.jpg",
         months: ["March", "April", "November"],
+        description: "Temples, traditional neighborhoods, gardens, and autumn foliage.",
+
 
         activities: [
-            {
-                name: "Fushimi Inari Shrine"
-            },
-            {
-                name: "Arashiyama Bamboo Grove"
-            },
-            {
-                name: "Kiyomizu-dera"
-            }
-        ]
+    {
+        name: "Fushimi Inari-taisha",
+        image: "images/fushimi-inari-taisha.jpg"
+    },
+    {
+        name: "Arashiyama",
+        image: "images/arashiyama.jpg"
+    },
+    {
+        name: "Kiyomizu-dera",
+        image: "images/kiyomizu-dera.jpg"
+    }
+]
     },
 
     {
         city: "Paris",
         country: "France",
         continent: "Europe",
+        image: "images/paris.jpg",
         months: ["April", "May", "September"],
+        description: "Museums, architecture, cafés, and long walks through historic neighborhoods.",
 
         activities: []
     },
@@ -55,6 +63,7 @@ const places = [
         city: "Nice",
         country: "France",
         continent: "Europe",
+        image: "images/nice.jpg",
         months: ["May", "June", "September"],
 
         activities: []
@@ -64,6 +73,7 @@ const places = [
         city: "Rome",
         country: "Italy",
         continent: "Europe",
+        image: "images/rome.jpg",
         months: ["April", "May", "October"],
 
         activities: []

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Region-wise — Travel Bucket List</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="page-header">
+
+        <a href="index.html" class="back-link">
+            ← home
+        </a>
+
+        <h1>region-wise</h1>
+
+        <p>
+            find somewhere to go based on where you want to travel.
+            choose a continent first, then narrow the options if you want.
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- PRIMARY FILTER: CONTINENT -->
+
+        <section class="filter-section">
+
+            <h2>continents</h2>
+
+            <div id="continent-buttons"></div>
+
+        </section>
+
+
+        <!-- OPTIONAL FILTER: TIME -->
+
+        <section class="filter-section">
+
+            <h2>months</h2>
+
+            <div id="month-buttons"></div>
+
+        </section>
+
+
+        <!-- OPTIONAL FILTER: COUNTRY -->
+
+        <section class="filter-section" id="country-section">
+
+            <h2>countries</h2>
+
+            <div id="country-buttons"></div>
+
+        </section>
+
+
+        <!-- RESULTS -->
+
+<section id="places-section">
+
+    <h2>cities</h2>
+
+    <div id="places-container"></div>
+
+</section>
+
+
+<!-- ACTIVITY CATALOGUE -->
+
+<section id="activities-section">
+
+    <div id="activities-container"></div>
+
+</section>
+
+<script src="places.js"></script>
+<script src="region.js"></script>
+
+<body class="region-page">
+
+</html>
