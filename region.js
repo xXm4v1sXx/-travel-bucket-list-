@@ -1,3 +1,6 @@
+document.addEventListener("placesLoaded", () => {
+
+    // your existing region.js code
 const container =
     document.getElementById("places-container");
 
@@ -26,7 +29,7 @@ let selectedCountry = null;
 // INITIAL STATE
 // =====================================
 
-// Countries and cities don't appear
+// Countries and regions don't appear
 // until a continent has been selected.
 
 countrySection.style.display = "none";
@@ -259,7 +262,7 @@ function updateCountries() {
             button.classList.add("active");
 
 
-            // Show filtered cities
+            // Show filtered regions
 
             showPlaces(
                 getMatchingPlaces()
@@ -318,7 +321,7 @@ for (const continent of continents) {
         updateCountries();
 
 
-        // Show cities immediately.
+        // Show regions immediately.
         //
         // Month is OPTIONAL.
         // Country is OPTIONAL.
@@ -402,7 +405,7 @@ for (const month of months) {
 
 
         // Continent exists:
-        // update countries + cities.
+        // update countries + regions.
 
         updateCountries();
 
@@ -925,3 +928,4 @@ function showActivities(place) {
         block: "start"
     });
 }
+});

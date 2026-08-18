@@ -1,3 +1,5 @@
+document.addEventListener("placesLoaded", () => {
+
 const container = document.getElementById("places-container");
 const continentButtonContainer = document.getElementById("continent-buttons");
 const monthButtonContainer = document.getElementById("month-buttons");
@@ -220,7 +222,7 @@ function showContinents() {
             // Month + continent
             updateCountries();
 
-            // Cities immediately update too
+            // regions immediately update too
             showPlaces(getMatchingPlaces());
         });
 
@@ -296,7 +298,7 @@ for (const month of months) {
 
         // THIS IS THE IMPORTANT PART:
         // month alone immediately gives us
-        // BOTH countries AND cities.
+        // BOTH countries AND regions.
 
         updateCountries();
 
@@ -818,8 +820,10 @@ function showActivities(place) {
 
     // Scroll to catalogue
 
-    container.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
+container.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+});
 }
+
+});

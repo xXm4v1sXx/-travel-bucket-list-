@@ -930,7 +930,7 @@ main {
     background-attachment: fixed;
 }
 
-/* REGION-WISE */
+/* area-wise */
 
 .region-page {
     background-image:
@@ -973,7 +973,7 @@ main {
 }
 
 
-/* REGION-WISE / PERIOD-WISE PAGE HEADINGS */
+/* area-wise / PERIOD-WISE PAGE HEADINGS */
 .page-header h1,
 .website-content > section > h2 {
     color: #FE019A;
@@ -1029,4 +1029,7 @@ main {
         0 0 20px #FE019A;
 
     transform: translateX(5px);
+}
+#places-section h2 {
+    color: #FE019A;
 }
