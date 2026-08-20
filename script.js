@@ -438,7 +438,7 @@ function showActivities(place) {
                 "review-label";
 
             reviewLabel.textContent =
-                "personal note";
+                "description";
 
             reviewContainer.appendChild(
                 reviewLabel

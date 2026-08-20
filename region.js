@@ -84,7 +84,6 @@ function showPlaces(placeList) {
         // Country
 
         const countryName = document.createElement("p");
-
         countryName.textContent = place.country;
 
         card.appendChild(countryName);
@@ -769,7 +768,7 @@ function showActivities(place) {
                 "review-label";
 
             reviewLabel.textContent =
-                "personal note";
+                "description";
 
             review.appendChild(reviewLabel);
 
